@@ -129,14 +129,26 @@ function Scene() {
 
 export default function LiquidBackground() {
   return (
-    <div className="w-full h-full">
-      <Canvas
-        camera={{ position: [0, 0, 5], fov: 75 }}
-        style={{ background: "transparent" }}
-        gl={{ alpha: true, antialias: true }}
-      >
-        <Scene />
-      </Canvas>
+    <div className="w-full h-full relative">
+      {/* CSS-based liquid background as base layer */}
+      <div className="liquid-bg">
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+      </div>
+      
+      {/* Three.js enhanced liquid effects */}
+      <div className="absolute inset-0 opacity-80">
+        <Canvas
+          camera={{ position: [0, 0, 5], fov: 75 }}
+          style={{ background: "transparent" }}
+          gl={{ alpha: true, antialias: true }}
+        >
+          <Scene />
+        </Canvas>
+      </div>
     </div>
   )
 }

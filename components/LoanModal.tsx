@@ -46,45 +46,61 @@ export default function LoanModal({ nft, onClose }: { nft: NFT; onClose: () => v
         </div>
 
         <div className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">Loan Amount (APT)</label>
-            <input
-              type="number"
-              value={loanAmount}
-              onChange={(e) => setLoanAmount(e.target.value)}
-              className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
-              placeholder="Enter amount"
-            />
-          </div>
+          <div className="flex space-x-4">
+            <div className="flex-1">
+              <label className="block text-sm font-medium text-gray-300 mb-2">Loan Amount (APT)</label>
+              <input
+                type="number"
+                value={loanAmount}
+                onChange={(e) => setLoanAmount(e.target.value)}
+                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
+                placeholder="Enter amount"
+              />
+            </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">Loan Duration</label>
-            <select
-              value={duration}
-              onChange={(e) => setDuration(e.target.value)}
-              className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500"
-            >
-              <option value="3d">3 days</option>
-              <option value="7d">7 days</option>
-              <option value="14d">14 days</option>
-              <option value="30d">30 days</option>
-            </select>
+            <div className="flex-1">
+              <label className="block text-sm font-medium text-gray-300 mb-2">Loan Duration</label>
+              <select
+                value={duration}
+                onChange={(e) => setDuration(e.target.value)}
+                className="w-full bg-gray-800 border border-gray-600 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500"
+              >
+                <option value="3d">3 days</option>
+                <option value="7d">7 days</option>
+                <option value="14d">14 days</option>
+                <option value="30d">30 days</option>
+              </select>
+            </div>
           </div>
 
           <div>
             <label className="block text-sm font-medium text-gray-300 mb-2">Interest Rate: {interestRate}%</label>
             <input
               type="range"
-              min="5"
-              max="25"
+              min="80"
+              max="260"
+              step="20"
               value={interestRate}
               onChange={(e) => setInterestRate(Number(e.target.value))}
               className="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer slider"
             />
             <div className="flex justify-between text-xs text-gray-400 mt-1">
-              <span>5%</span>
-              <span>25%</span>
+              <span>80%</span>
+              <span>260%</span>
             </div>
+            <p className="text-sm text-gray-300 mt-2">
+              Interest (APT):{" "}
+              <span className="text-white font-medium">
+                {useGUI
+                  ? `${((Number(loanAmount) * interestRate * 0.8) / 100).toFixed(2)} APT (${((Number(loanAmount) * interestRate) / 100).toFixed(2)} - `
+                  : `${((Number(loanAmount) * interestRate) / 100).toFixed(2)} APT`}
+              </span>
+              {useGUI && (
+                <span className="text-sm text-blue-400">
+                  {`${((Number(loanAmount) * interestRate * 0.2) / 100).toFixed(2)} APT GUI Discount)`}
+                </span>
+              )}
+            </p>
           </div>
 
           <div className="flex items-center space-x-3 p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
@@ -97,7 +113,7 @@ export default function LoanModal({ nft, onClose }: { nft: NFT; onClose: () => v
             />
             <label htmlFor="useGUI" className="text-sm text-white flex items-center">
               <Info className="w-4 h-4 mr-2 text-blue-400" />
-              Repay with $GUI and save 20%
+              Repay interest with $GUI and save 20%
             </label>
           </div>
         </div>

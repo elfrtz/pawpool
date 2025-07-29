@@ -3,8 +3,8 @@ import { Lock, FileText, RefreshCw } from "lucide-react"
 const steps = [
   {
     icon: Lock,
-    title: "Lock NFT in Escrow",
-    description: "Your NFT is securely held in a smart contract escrow while you receive your loan.",
+    title: "Lock your NFT",
+    description: "Your NFT is frozen in your wallet, ensuring it can't be sold or transferred while the loan is active.",
   },
   {
     icon: FileText,
@@ -14,7 +14,7 @@ const steps = [
   {
     icon: RefreshCw,
     title: "Repay or Default",
-    description: "Repay your loan to get your NFT back, or let it transfer to the lender if you default.",
+    description: "Repay your loan to unlock your NFT, or let it transfer to the lender if you default.",
   },
 ]
 
@@ -24,7 +24,7 @@ export default function HowItWorksSection() {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
-            How Liqxos Works
+            How PawPool Works
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Simple, secure, and transparent NFT-backed lending in three easy steps.

@@ -55,7 +55,7 @@ export default function BorrowRequestCard({ nft, loanAmount, apy, duration, stat
 
       {status === "matched" && <button className="w-full btn-primary text-sm py-2">Repay Loan</button>}
 
-      {status === "repaid" && <button className="w-full btn-outline text-sm py-2">Claim NFT</button>}
+      {status === "repaid" && <button className="w-full btn-outline text-sm py-2">Unlock NFT</button>}
     </div>
   )
 }

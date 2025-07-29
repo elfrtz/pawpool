@@ -71,3 +71,42 @@ export default function LoanRequestCard({ request, onFundLoan }: { request: Loan
     </div>
   )
 }
+
+const loanRequests = [
+  {
+    id: 1,
+    nft: {
+      name: "GUI Gang #1234",
+      image: "/guigang-logo.png?height=200&width=200",
+      collection: "GUI Gang",
+    },
+    requestedAmount: "12 APT",
+    apy: "80%",
+    duration: "7 days",
+    borrower: "0x1234...5678",
+  },
+  {
+    id: 2,
+    nft: {
+      name: "AptoRobos #567",
+      image: "/aptorobos-logo.png?height=200&width=200",
+      collection: "AptoRobos",
+    },
+    requestedAmount: "18 APT",
+    apy: "140%",
+    duration: "14 days",
+    borrower: "0x8765...4321",
+  },
+  {
+    id: 3,
+    nft: {
+      name: "The Loonies #890",
+      image: "/theloonies-logo.jpg?height=200&width=200",
+      collection: "The Loonies",
+    },
+    requestedAmount: "6 APT",
+    apy: "180%",
+    duration: "3 days",
+    borrower: "0x9876...1234",
+  },
+]

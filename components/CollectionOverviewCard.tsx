@@ -60,6 +60,8 @@ export default function CollectionOverviewCard({ collection }: { collection: Col
           <span className="text-white font-medium">{collection.avgDuration}</span>
         </div>
       </div>
+
+      <button className="btn-primary w-full mt-4">Make Offer</button>
     </div>
   )
 }
