@@ -1,16 +1,17 @@
 # Table of contents
 
-* [Welcome](README.md)
+* [Welcome to PawPool](README.md)
 
-## Getting Started
+## WHITEPAPER
 
-* [Quickstart](getting-started/quickstart.md)
-* [Publish your docs](getting-started/publish-your-docs.md)
-
-## Basics
-
-* [Editor](basics/editor.md)
-* [Markdown](basics/markdown.md)
-* [Images & media](basics/images-and-media.md)
-* [Interactive blocks](basics/interactive-blocks.md)
-* [Integrations](basics/integrations.md)
+* [Problem Statement](whitepaper/quickstart.md)
+* [The Solution](whitepaper/the-solution.md)
+* [Key Features](whitepaper/key-features/README.md)
+  * [Lend](whitepaper/key-features/lend/README.md)
+    * [How Lending Works](whitepaper/key-features/lend/how-lending-works.md)
+    * [Create Lending Offers](whitepaper/key-features/lend/create-lending-offers.md)
+  * [Borrow](whitepaper/key-features/borrow/README.md)
+    * [How Borrowing Works](whitepaper/key-features/borrow/how-borrowing-works.md)
+    * [Accept Lending Offers](whitepaper/key-features/borrow/accept-lending-offers.md)
+    * [$GUI Repayment](whitepaper/key-features/borrow/usdgui-repayment.md)
+* [$GUI Utility](whitepaper/usdgui-utility.md)
