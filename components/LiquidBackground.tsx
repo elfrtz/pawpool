@@ -44,9 +44,12 @@ const FloatingParticles = React.memo(function FloatingParticles() {
   const particlesPosition = useMemo(() => {
     const positions = new Float32Array(100 * 3) // Reduced from 200 to 100
     for (let i = 0; i < 100; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 20
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 20
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 20
+      // Create particles more concentrated around paw print area
+      const angle = Math.random() * Math.PI * 2
+      const radius = Math.random() * 8 + 2
+      positions[i * 3] = Math.cos(angle) * radius * (0.5 + Math.random() * 0.5)
+      positions[i * 3 + 1] = Math.sin(angle) * radius * (0.3 + Math.random() * 0.4) - 1
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 15
     }
     return positions
   }, [])
@@ -102,10 +105,18 @@ const Scene = React.memo(function Scene() {
       <directionalLight position={[10, 10, 5]} intensity={0.8} color="#ffffff" />
       <pointLight position={[-10, -10, -10]} color="#1E3A8A" intensity={0.3} />
 
-      {/* Reduced number of liquid spheres for better performance */}
-      <LiquidSphere position={[-3, 1, -3]} scale={1.2} speed={0.4} distort={0.5} />
-      <LiquidSphere position={[3, -1, -4]} scale={1} speed={0.3} distort={0.4} />
-      <LiquidSphere position={[0, 2, -5]} scale={1.5} speed={0.2} distort={0.6} />
+      {/* Dog paw print pattern - Main paw pad (larger, bottom center) */}
+      <LiquidSphere position={[0, -1.5, -4]} scale={2.2} speed={0.15} distort={0.4} />
+      
+      {/* Toe pads - arranged above the main pad with increased spacing */}
+      {/* Left outer toe */}
+      <LiquidSphere position={[-3.2, 1.0, -3.5]} scale={1.1} speed={0.25} distort={0.3} />
+      {/* Left inner toe */}
+      <LiquidSphere position={[-1.2, 1.6, -3.2]} scale={1.0} speed={0.3} distort={0.35} />
+      {/* Right inner toe */}
+      <LiquidSphere position={[1.2, 1.6, -3.2]} scale={1.0} speed={0.28} distort={0.35} />
+      {/* Right outer toe */}
+      <LiquidSphere position={[3.2, 1.0, -3.5]} scale={1.1} speed={0.22} distort={0.3} />
 
       {/* Floating particles */}
       <FloatingParticles />
