@@ -4,6 +4,7 @@ import Link from "next/link"
 import { useState } from "react"
 import { Menu, X } from "lucide-react"
 import Image from "next/image"
+import NotificationDropdown from "./NotificationDropdown"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -18,11 +19,11 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo and Navigation */}
-          <Link href="/" className="flex items-center space-x-4 group">
-            <div className="w-8 h-8">
+          <Link href="/" className="flex items-center space-x-3 group">
+            <div className="w-8 h-8 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12">
               <Image src="/pawpool-logo.png" alt="PawPool Logo" width={32} height={32} />
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
+            <span className="text-xl logo-text">
               PawPool
             </span>
           </Link>
@@ -35,11 +36,7 @@ export default function Navbar() {
             <Link href="/lend" className="text-gray-300 hover:text-white transition-colors duration-300">
               Lend
             </Link>
-            <button className="text-gray-300 hover:text-white transition-colors duration-300">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V4a2 2 0 10-4 0v1.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-              </svg>
-            </button>
+            <NotificationDropdown />
             <button
               onClick={handleWalletClick}
               className={`btn-primary ${isConnected ? 'bg-yellow-500 text-black hover:bg-yellow-600' : ''}`}

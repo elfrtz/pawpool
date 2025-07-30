@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Audiowide&family=Sora:wght@100;200;300;400;500;600;700;800&family=Oxanium:wght@200;300;400;500;600;700;800&family=Exo+2:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -419,4 +421,78 @@ html {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
+}
+
+/* Modern Futuristic Font Families */
+.font-orbitron {
+  font-family: 'Orbitron', monospace;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.font-space-grotesk {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.font-audiowide {
+  font-family: 'Audiowide', monospace;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+}
+
+.font-sora {
+  font-family: 'Sora', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.font-oxanium {
+  font-family: 'Oxanium', monospace;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.font-exo2 {
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+/* Enhanced logo styling with text effects */
+.logo-text {
+  font-family: 'Orbitron', monospace;
+  font-weight: 800;
+  font-size: 2rem;
+  letter-spacing: 0.1em;
+  background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 25%, #81d4fa 50%, #2196f3 75%, #1565c0 100%);
+  background-size: 300% 300%;
+  animation: logoGlow 4s ease-in-out infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 30px rgba(33, 150, 243, 0.3);
+  transition: all 0.3s ease;
+}
+
+.logo-text:hover {
+  letter-spacing: 0.15em;
+  text-shadow: 0 0 40px rgba(33, 150, 243, 0.5);
+  transform: scale(1.02);
+}
+
+@keyframes logoGlow {
+  0% { 
+    background-position: 0% 50%;
+    filter: brightness(1);
+  }
+  50% { 
+    background-position: 100% 50%;
+    filter: brightness(1.1);
+  }
+  100% { 
+    background-position: 0% 50%;
+    filter: brightness(1);
+  }
 }

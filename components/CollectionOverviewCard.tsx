@@ -11,7 +11,13 @@ interface Collection {
   avgDuration: string
 }
 
-export default function CollectionOverviewCard({ collection }: { collection: Collection }) {
+export default function CollectionOverviewCard({ 
+  collection, 
+  onMakeOffer 
+}: { 
+  collection: Collection
+  onMakeOffer?: () => void 
+}) {
   return (
     <div className="glass-card glass-card-hover p-6 cursor-pointer group">
       <div className="flex items-center space-x-4 mb-4">
@@ -61,7 +67,14 @@ export default function CollectionOverviewCard({ collection }: { collection: Col
         </div>
       </div>
 
-      <button className="btn-primary w-full mt-4">Make Offer</button>
+      {onMakeOffer && (
+        <button 
+          onClick={onMakeOffer}
+          className="btn-primary w-full mt-4"
+        >
+          Make Offer
+        </button>
+      )}
     </div>
   )
 }

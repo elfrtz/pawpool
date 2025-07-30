@@ -6,6 +6,7 @@ import CollectionOverviewCard from "@/components/CollectionOverviewCard"
 import LoanRequestCard from "@/components/LoanRequestCard"
 import LendingDashboardCard from "@/components/LendingDashboardCard"
 import LoanDetailModal from "@/components/LoanDetailModal"
+import LoanOfferModal from "@/components/LoanOfferModal"
 
 const collections = [
 	{
@@ -101,6 +102,13 @@ export default function LendPage() {
 	const [selectedLoan, setSelectedLoan] = useState<any>(null)
 	const [activeTab, setActiveTab] = useState("active")
 	const [sortBy, setSortBy] = useState("highest-apy")
+	const [isLoanOfferModalOpen, setIsLoanOfferModalOpen] = useState(false)
+	const [selectedCollection, setSelectedCollection] = useState<any>(null)
+
+	const handleMakeOffer = (collection: any) => {
+		setSelectedCollection(collection)
+		setIsLoanOfferModalOpen(true)
+	}
 
 	return (
 		<div className="min-h-screen pt-24 pb-12 px-4 sm:px-6 lg:px-8">
@@ -149,6 +157,7 @@ export default function LendPage() {
 							<CollectionOverviewCard
 								key={collection.id}
 								collection={collection}
+								onMakeOffer={() => handleMakeOffer(collection)}
 							/>
 						))}
 					</div>
@@ -280,6 +289,17 @@ export default function LendPage() {
 				{/* Loan Detail Modal */}
 				{selectedLoan && (
 					<LoanDetailModal loan={selectedLoan} onClose={() => setSelectedLoan(null)} />
+				)}
+
+				{/* Loan Offer Modal */}
+				{isLoanOfferModalOpen && selectedCollection && (
+					<LoanOfferModal 
+						collection={selectedCollection} 
+						onClose={() => {
+							setIsLoanOfferModalOpen(false)
+							setSelectedCollection(null)
+						}} 
+					/>
 				)}
 			</div>
 		</div>
