@@ -30,6 +30,14 @@ export default function Navbar() {
 
           {/* Navigation and Actions */}
           <div className="hidden md:flex items-center space-x-4">
+            <a 
+              href="https://pawpool.gitbook.io/docs/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gray-300 hover:text-white transition-colors duration-300"
+            >
+              Docs
+            </a>
             <Link href="/borrow" className="text-gray-300 hover:text-white transition-colors duration-300">
               Borrow
             </Link>
@@ -60,6 +68,14 @@ export default function Navbar() {
         {isOpen && (
           <div className="md:hidden border-t border-white/10 pt-4 pb-4">
             <div className="flex flex-col space-y-4">
+              <a 
+                href="https://pawpool.gitbook.io/docs/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-300 hover:text-white transition-colors duration-300"
+              >
+                Docs
+              </a>
               <Link href="/borrow" className="text-gray-300 hover:text-white transition-colors duration-300">
                 Borrow
               </Link>
