@@ -100,10 +100,38 @@ const loanRequests = [
 
 export default function LendPage() {
 	const [selectedLoan, setSelectedLoan] = useState<any>(null)
-	const [activeTab, setActiveTab] = useState("active")
+	const [activeTab, setActiveTab] = useState("all")
 	const [sortBy, setSortBy] = useState("highest-apy")
 	const [isLoanOfferModalOpen, setIsLoanOfferModalOpen] = useState(false)
 	const [selectedCollection, setSelectedCollection] = useState<any>(null)
+
+	const lendingItems = [
+		{
+			nft: { name: "GUI Gang #1234", image: "/guigang-logo.png?height=200&width=200" },
+			loanAmount: "12 APT",
+			interestEarned: "1.2 APT",
+			timeLeft: "3 days",
+			status: "active" as const,
+		},
+		{
+			nft: { name: "AptoRobos #567", image: "/aptorobos-logo.png?height=200&width=200" },
+			loanAmount: "18 APT",
+			interestEarned: "2.8 APT",
+			timeLeft: "Completed",
+			status: "completed" as const,
+		},
+		{
+			nft: { name: "The Loonies #890", image: "/theloonies-logo.jpg?height=200&width=200" },
+			loanAmount: "6 APT",
+			interestEarned: "0.8 APT",
+			timeLeft: "Defaulted",
+			status: "defaulted" as const,
+		},
+	]
+
+	const filteredItems = activeTab === "all" 
+		? lendingItems.sort((a, b) => a.status.localeCompare(b.status))
+		: lendingItems.filter((item) => item.status === activeTab)
 
 	const handleMakeOffer = (collection: any) => {
 		setSelectedCollection(collection)
@@ -236,7 +264,7 @@ export default function LendPage() {
 
 					<div className="glass-card p-6">
 						<div className="flex space-x-1 mb-6 bg-white/5 rounded-xl p-1">
-							{["active", "completed", "defaulted"].map((tab) => (
+							{["all", "active", "completed", "defaulted"].map((tab) => (
 								<button
 									key={tab}
 									onClick={() => setActiveTab(tab)}
@@ -252,36 +280,16 @@ export default function LendPage() {
 						</div>
 
 						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-							<LendingDashboardCard
-								nft={{
-									name: "GUI Gang #1234",
-									image: "/guigang-logo.png?height=200&width=200",
-								}}
-								loanAmount="12 APT"
-								interestEarned="1.2 APT"
-								timeLeft="3 days"
-								status="active"
-							/>
-							<LendingDashboardCard
-								nft={{
-									name: "AptoRobos #567",
-									image: "/aptorobos-logo.png?height=200&width=200",
-								}}
-								loanAmount="18 APT"
-								interestEarned="2.8 APT"
-								timeLeft="Completed"
-								status="completed"
-							/>
-							<LendingDashboardCard
-								nft={{
-									name: "The Loonies #890",
-									image: "/theloonies-logo.jpg?height=200&width=200",
-								}}
-								loanAmount="6 APT"
-								interestEarned="0.8 APT"
-								timeLeft="Defaulted"
-								status="defaulted"
-							/>
+							{filteredItems.map((item, index) => (
+								<LendingDashboardCard
+									key={index}
+									nft={item.nft}
+									loanAmount={item.loanAmount}
+									interestEarned={item.interestEarned}
+									timeLeft={item.timeLeft}
+									status={item.status}
+								/>
+							))}
 						</div>
 					</div>
 				</section>

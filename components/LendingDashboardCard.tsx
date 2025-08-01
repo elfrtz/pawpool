@@ -1,7 +1,7 @@
 import Image from "next/image"
 import { Clock, TrendingUp } from "lucide-react"
 
-interface LendingDashboard {
+export interface LendingDashboard {
   nft: {
     name: string
     image: string
