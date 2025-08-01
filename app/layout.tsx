@@ -7,8 +7,8 @@ import Navbar from "@/components/Navbar"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Liqxos - Make Your NFTs Liquid",
-  description: "Borrow APT against your Aptos NFTs. Fully on-chain, no middlemen, no selling.",
+  title: "PawPool - Make Your NFTs Liquid",
+  description: "Borrow APT against your Aptos NFTs. Fully on-chain, secure, trustless.",
     generator: 'v0.dev'
 }
 
